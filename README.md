@@ -4,9 +4,10 @@
 ## 环境配置
 
 - 安装 node
-- 安装 MongoDB
+- 安装 MongoDB [教程](https://www.runoob.com/mongodb/mongodb-osx-install.html)
 - 启动 MongoDB
-  -  brew services start mongodb
+  -  sudo mongod
+- ps:(端口修改在app.js 文件 `app.listen(8080)`)
 
 ## 运行
 - npm install
