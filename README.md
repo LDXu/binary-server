@@ -39,7 +39,7 @@ sudo mongod
 ### 4. 启动静态资源服务器
 
 ```shell
-cd ../binary-server
+cd 当前目录
 
 npm install
 
