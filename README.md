@@ -1,19 +1,51 @@
-# binary-server
-二进制文件服务器 （辅助组件二进制化）
+## 一、环境搭建
 
-## 环境配置
+### 1.创建一个存放二进制私有源仓库
 
-- 安装 node
-- 安装 MongoDB [教程](https://www.runoob.com/mongodb/mongodb-osx-install.html)
-- 启动 MongoDB
-  -  sudo mongod
-- ps:(端口修改在app.js 文件 `app.listen(8080)`)
+如：https://github.com/su350380433/example_spec_dev，并添加到本地仓库中
 
-## 运行
-- npm install
-- npm start
+``` shell
+pod repo add example_spec_bin_dev git@github.com:su350380433/example_spec_bin_dev.git
+```
 
-## 路由
+### 2.安装mongodb
+
+```shell
+# 进入 /usr/local
+cd /usr/local
+
+# 下载
+sudo curl -O https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-4.0.9.tgz
+
+# 解压
+sudo tar -zxvf mongodb-osx-ssl-x86_64-4.0.9.tgz
+
+# 重命名为 mongodb 目录
+
+sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
+
+#创建一个数据库存储目录 /data/db：
+sudo mkdir -p /data/db
+```
+
+### 3. 启动mongod
+
+``` shell
+sudo mongod
+```
+
+### 4. 启动静态资源服务器
+
+```shell
+cd ../binary-server
+
+npm install
+
+npm start #确保mongod 已经启动成功
+
+```
+ps:(端口修改在app.js 文件 `app.listen(8080)`)
+## 5. 路由
 
 ```node
 .get('/frameworks', frameworks.show)
@@ -59,3 +91,4 @@ curl http://localhost:8080/frameworks/PodA/0.2.4/zip > PodA.framework.zip
 ```
 curl -X 'DELETE' http://localhost:8080/frameworks/PodA/0.2.4 -O -J
 ```
+
