@@ -6,7 +6,12 @@ const koaBody = require('koa-body')
 
 const app = new Koa
 
-mongoose.connect('mongodb://localhost/binary_database')
+const mongoDBHost =
+  process.env.BUILD_ENV === 'docker'
+    ? 'mongodb://database/binary_database'
+    : 'mongodb://localhost/binary_database';
+
+mongoose.connect(mongoDBHost, {useNewUrlParser: true, useUnifiedTopology: true})
 
 app.use(koaBody({ multipart: true }))
 app.use(logger())

@@ -1,3 +1,10 @@
+## docker安装
+### 1.安装docker和docker-compose
+docker -v
+docker-compose -v
+### 2.运行项目      
+后台运行：docker-compose up -d --build
+前台运行：docker-compose up --build
 ## 一、环境搭建
 
 ### 1.创建一个存放二进制私有源仓库
