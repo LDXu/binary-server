@@ -1,13 +1,19 @@
+# 1.安装
+
 ## docker安装
 ### 1.安装docker和docker-compose
 docker -v
 docker-compose -v
-### 2.运行项目      
+### 2.创建容器和运行项目      
 后台运行：docker-compose up -d --build
 前台运行：docker-compose up --build
-## 一、环境搭建
+注意点：
+--build 会新建镜像和创建新容器，所以首次或者变更后build以后，后续都是docker-compose up即可
+启动容器： docker-compose up
+## 手动安装 
+### 一、环境搭建
 
-### 1.创建一个存放二进制私有源仓库
+#### 1.创建一个存放二进制私有源仓库
 
 如：https://github.com/su350380433/example_spec_dev
 
@@ -17,7 +23,7 @@ docker-compose -v
 pod repo add example_spec_bin_dev git@github.com:su350380433/example_spec_bin_dev.git
 ```
 
-### 2.安装mongodb
+#### 2.安装mongodb
 
 ```shell
 # 进入 /usr/local
@@ -37,13 +43,13 @@ sudo mv mongodb-osx-x86_64-4.0.9/ mongodb
 sudo mkdir -p /data/db
 ```
 
-### 3. 启动mongod
+#### 3. 启动mongod
 
 ``` shell
 sudo mongod
 ```
 
-### 4. 启动静态资源服务器
+#### 4. 启动静态资源服务器
 
 ```shell
 cd 当前目录
@@ -54,7 +60,7 @@ npm start #确保mongod 已经启动成功
 
 ```
 ps:(端口修改在app.js 文件 `app.listen(8080)`)
-## 5. 路由
+# 2.路由
 
 ```node
 .get('/frameworks', frameworks.show)
